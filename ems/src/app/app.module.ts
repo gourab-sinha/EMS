@@ -9,6 +9,8 @@ import { MatToolbarModule} from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
+import { EmployeeListComponent } from './employees/employee-list/employee-list.component';
+import { EmployeeCreateComponent } from './employees/employee-create/employee-create.component';
 
 
 
@@ -16,7 +18,9 @@ import { HeaderComponent } from './header/header.component';
   declarations: [
     AppComponent,
     EmployeesComponent,
-    HeaderComponent
+    HeaderComponent,
+    EmployeeListComponent,
+    EmployeeCreateComponent
   ],
   imports: [
     BrowserModule,
