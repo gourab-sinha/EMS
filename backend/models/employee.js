@@ -1,6 +1,6 @@
 // Employee model structure
 const mongoose = require('mongoose');
-const uniqueValidator=  require('mongoose-unique-validator');
+const uniqueValidator = require('mongoose-unique-validator');
 const employeeSchema = new mongoose.Schema({
     firstName: {type: String, required: true},
     lastName: {type: String, required: true},

@@ -1,9 +1,46 @@
 // Router
 const express = require('express');
 const router = express.Router();
+const bodyParser = require('body-parser');
 
 // Model
 const Employee = require('../models/employee');
+
+// Post Request
+router.post("", (req,res,next)=>{
+    console.log(req.body.firstName);
+    console.log(req.body.lastName);
+    console.log(req.body.email);
+    console.log(req.body.role);
+    const employee = new Employee({
+        firstName: "Gourab",
+        lastName: "Sinha",
+        email: "g@g.com",
+        role: "Software Develper"
+    });
+    // console.log(employee);
+    // return res.status(200).json({
+    //     message: "TEST"
+    // });
+    employee.save().then(createdEmployee =>{
+        console.log(createdEmployee);
+        res.status(200).json({
+            message: "Successfully added",
+            employee: {
+                id: createdEmployee._id,
+                firstName: createdEmployee.firstName,
+                lastName: createdEmployee.lastName,
+                email: createdEmployee.email,
+                role: createdEmployee.role
+            }
+        });
+    }).catch(err=>{
+        console.log(err);
+        res.status(401).json({
+            message: "Not authorized"
+        });
+    });
+});
 
 // Get Request
 router.get("", (req,res,next)=>{
@@ -33,5 +70,7 @@ router.get("", (req,res,next)=>{
         });
     });
 });
+
+
 
 module.exports = router;
