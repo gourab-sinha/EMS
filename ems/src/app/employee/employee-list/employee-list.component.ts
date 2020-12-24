@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../employee.model';
 import { PageEvent } from '@angular/material/paginator';
+import { EmployeeService } from '../employee.service';
 
 @Component({
   selector: 'app-employee-list',
@@ -12,24 +13,17 @@ export class EmployeeListComponent implements OnInit {
   employeesPerPage = 1;
   currentPage = 1;
   pageSizeOptions = [1,2,5,10];
-  isLoading = true;
 
-  employees: Employee[] = [
-    {firstName: 'Gourab', lastName: 'Sinha', email: 'g@g.com', role: 'Software Developer'},
-    {firstName: 'Sourab', lastName: 'Sinha', email: 'g@g.com', role: 'Software Developer'},
-    {firstName: 'Rahul', lastName: 'Sinha', email: 'g@g.com', role: 'Software Developer'},
-  ];
-  constructor() { }
+  employees: Employee[] = [];
+  constructor(private employeeService: EmployeeService) { }
 
   ngOnInit(): void {
-    this.isLoading = false;
+    this.employees = this.employeeService.getEmployees();
   }
 
   onChangedPage(pageData: PageEvent){
-    this.isLoading = true;
     this.currentPage = pageData.pageIndex + 1;
     this.employeesPerPage = pageData.pageSize;
-    
   }
 
 }

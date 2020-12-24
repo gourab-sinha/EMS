@@ -3,4 +3,5 @@ export interface Employee{
     lastName: string;
     role: string;
     email: string;
+    status: boolean
 }
