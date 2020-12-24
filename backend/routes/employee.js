@@ -62,7 +62,7 @@ router.get("", (req,res,next)=>{
             message: "Employees fetched successfully",
             employees: fetchedEmployees,
             totalCount: count
-        })
+        });
     }).catch(err=>{
         console.error(err);
         res.status(500).json({
